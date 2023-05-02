@@ -18,6 +18,8 @@ public class EmployeeService {
 
     private final RestTemplate restTemplate;
 
+    private APIClients apiClients;
+
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
         Employee employee = new Employee(
                 employeeDTO.getId(),
@@ -44,9 +46,11 @@ public class EmployeeService {
         Employee getEmployeeById = employeeRepository
                                             .findById(id)
                                             .orElseThrow(() -> new RuntimeException("Employee not found with id : " + id));
-        String url = "http://localhost:8080/api/departments/";
-        ResponseEntity<DepartmentDTO> responseEntity = restTemplate.getForEntity(url + getEmployeeById.getDepartmentCode()
-                , DepartmentDTO.class);
+//        String url = "http://localhost:8080/api/departments/";
+//        ResponseEntity<DepartmentDTO> responseEntity = restTemplate.getForEntity(url + getEmployeeById.getDepartmentCode()
+//                , DepartmentDTO.class);
+
+        DepartmentDTO departmentDto = apiClients.getDepartment(getEmployeeById.getDepartmentCode());
 
         EmployeeDTO employeeDTO = new EmployeeDTO(
                 getEmployeeById.getId(),
@@ -56,7 +60,7 @@ public class EmployeeService {
                 getEmployeeById.getDepartmentCode()
         );
 
-        DepartmentDTO departmentDto = responseEntity.getBody();
+//        DepartmentDTO departmentDto = responseEntity.getBody();
 
         ApiResponseDTO apiResponseDTO = new ApiResponseDTO();
         apiResponseDTO.setEmployeeDTO(employeeDTO);
