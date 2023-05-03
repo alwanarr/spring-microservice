@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateways" />
+        <module name="config-server" />
         <module name="department-service" />
         <module name="service-registry" />
         <module name="employee-service" />
@@ -15,6 +16,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateways" target="1.8" />
+      <module name="config-server" target="1.8" />
       <module name="department-service" target="1.8" />
       <module name="employee-service" target="1.8" />
       <module name="service-registry" target="1.8" />
@@ -23,6 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateways" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="department-service" options="-parameters" />
       <module name="employee-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
