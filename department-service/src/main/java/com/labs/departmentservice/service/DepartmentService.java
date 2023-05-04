@@ -34,7 +34,8 @@ public class DepartmentService {
     }
 
     public DepartmentDTO getDepartmentByCode(String code) {
-        Department department = departmentRepository.findByDepartmentCode(code);
+        Department department = departmentRepository.findByDepartmentCode(code)
+                .orElseThrow(() -> new RuntimeException("Data tidak ditemukan!"));
 
         DepartmentDTO departmentDTO = new DepartmentDTO(
                 department.getId(),
